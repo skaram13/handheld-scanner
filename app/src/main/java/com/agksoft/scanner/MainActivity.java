@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.agksoft.scanner.custom_views.EditTextExtended;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,20 +21,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        final EditText editTextUPC = (EditText) findViewById(R.id.editTextUPC);
-        final EditText editTextSellingPrice = (EditText) findViewById(R.id.editTextSellingPrice);
-        final EditText editTextCost = (EditText) findViewById(R.id.editTextCost);
-        final EditText editTextDepartment = (EditText) findViewById(R.id.editTextDepartment);
-        final EditText editTextPriceGroup = (EditText) findViewById(R.id.editTextPriceGroup);
-        final EditText editTextDescription = (EditText) findViewById(R.id.editTextDescription);
-        final EditText editTextCRV = (EditText) findViewById(R.id.editTextCRV);
-        final EditText editTextUPCType = (EditText) findViewById(R.id.editTextUPCType);
+        final EditTextExtended editTextUPC = findViewById(R.id.editTextUPC);
+        final EditTextExtended editTextSellingPrice = findViewById(R.id.editTextSellingPrice);
+        final EditTextExtended editTextCost = findViewById(R.id.editTextCost);
+        final EditTextExtended editTextDepartment = findViewById(R.id.editTextDepartment);
+        final EditTextExtended editTextPriceGroup = findViewById(R.id.editTextPriceGroup);
+        final EditTextExtended editTextDescription = findViewById(R.id.editTextDescription);
+        final EditTextExtended editTextCRV = findViewById(R.id.editTextCRV);
+        final EditTextExtended editTextUPCType = findViewById(R.id.editTextUPCType);
         Button buttonSave = (Button) findViewById(R.id.buttonSave);
         Button buttonCancel = (Button) findViewById(R.id.buttonCancel);
 
         buttonSave.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editTextUPC.validateLong();
+                editTextUPC.getError();
                 Item item = new Item(
                         editTextUPC.getText().toString(),
                         Double.valueOf(editTextSellingPrice.getText().toString()),
